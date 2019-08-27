@@ -47,4 +47,10 @@ public class PessoaResource {
         Pessoa pessoa = obj.orElse(null);
         return pessoa != null ? ResponseEntity.ok().body(pessoa) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Long codigo) {
+        pessoaRepository.deleteById(codigo);
+    }
 }
