@@ -64,11 +64,6 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, erros, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 
-//    @ExceptionHandler(EmptyResultDataAccessException.class)
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
-//    public void handleEmptyResultDataAccessException() {}
-
-
     private List<Erro> criarListaDeErros(BindingResult bindingResult) {
         List<Erro> erros = new ArrayList<>();
 
@@ -81,7 +76,7 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
         return erros;
     }
 
-    private class Erro {
+    public static class Erro {
 
         private String mensagemUsuario;
         private String mensagemDesenvolvedor;
