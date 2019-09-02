@@ -7,7 +7,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 
 /* Caso queira configurar outras fontes de mensagens */
 @Configuration
-public class Messages {
+public class MessagesConfig {
 
     @Bean
     public MessageSource messageSource() {
