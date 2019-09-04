@@ -2,6 +2,7 @@ package com.algaworks.algamoney.api.resource;
 
 import com.algaworks.algamoney.api.event.RecursoCriadoEvent;
 import com.algaworks.algamoney.api.model.Lancamento;
+import com.algaworks.algamoney.api.repository.projection.ResumoLancamento;
 import com.algaworks.algamoney.api.service.LancamentoService;
 import com.algaworks.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
 import com.algaworks.algamoney.api.exception.AlgamoneyExceptionHandler;
@@ -44,6 +45,13 @@ public class LancamentoResource {
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
     public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
         return lancamentoRepository.filtrar(lancamentoFilter, pageable);
+        //return ResponseEntity.ok().body(lancamentos);
+    }
+
+    @GetMapping(params = "resumo")
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+    public Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable) {
+        return lancamentoRepository.resumir(lancamentoFilter, pageable);
         //return ResponseEntity.ok().body(lancamentos);
     }
 
